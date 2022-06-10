@@ -116,4 +116,4 @@ client.on("guildDelete", guild => {
         .setFooter({text: `Désormais : ${client.guilds.cache.size} serveurs`});
     channel.send({embeds: [removeembed]})    
 });
-client.login("OTY1Mzk0MTYxMTg2NTM3NDcz.GFGXoh.6OV4VevKqYPYA6NdCmdOuypFcZ_L3ZNzwlaQkQ");
+client.login("votre token");
