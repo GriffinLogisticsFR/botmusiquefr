@@ -10,11 +10,6 @@ let client = new Client({
     ],
     disableMentions: 'everyone',
 });
-const memberCounter = require ('./counters/member-counter');
-client.on("ready", () => {
-    console.log(`${client.user.username} ready!`);
-    memberCounter(client);
-});
 
 client.config = require('./config');
 client.player = new Player(client, client.config.opt.discordPlayer);
@@ -84,36 +79,5 @@ console.log("Le jeton bot que vous avez entré dans votre projet est incorrect o
 });
 } else{
 }
-client.on("guildCreate", guild => {
-    
-    const channel = client.channels.cache.get("983531874787950622") //channel où le message sera envoyer
-    //console.log(channel)
-    let addembed = new MessageEmbed()
-        .setTitle(`${client.user.username} vient d'être ajouté sur le serveur : ${guild.name}`)
-        .setThumbnail(guild.iconURL())
-        .addField(`👑 Propriétaire:`, `<@${guild.ownerId}>`)
-        .addField(`Owner ID:`, `${guild.ownerId}`)
-        .addField(`📇 Nom du serveur :`, `${guild.name}`)
-        .addField(` Id du serveur:`, `${guild.id}`)
-        .addField(` Nombre de membres:`, `${guild.memberCount}`)
-        .setColor("#ff0000")
-        .setTimestamp()
-        .setFooter({text: `Merci grâce à toi nous sommes à ${client.guilds.cache.size} serveurs`});
-    channel.send({embeds: [addembed]});
-});
-client.on("guildDelete", guild => {
-    const channel = client.channels.cache.get("983531874787950622") //channel où le message s'envoie
-    //console.log(channel)
-    let removeembed = new MessageEmbed()
-        .setTitle(`${client.user.username} vient d\'être retiré du serveur serveur ${guild.name}`)
-        .setThumbnail(guild.iconURL())
-        .addField(`👑 Propriétaire:`, `<@${guild.ownerId}>`)
-         .addField(`Owner ID:`, `${guild.ownerId}`)
-        .addField(`📇 Nom du serveur :`, `${guild.name}`)
-        .addField(` Id du serveur:`, `${guild.id}`)
-        .addField(` Nombre de membres:`, `${guild.memberCount}`)
-        .setColor(`fc3d12`)
-        .setFooter({text: `Désormais : ${client.guilds.cache.size} serveurs`});
-    channel.send({embeds: [removeembed]})    
-});
+
 client.login("votre token");
